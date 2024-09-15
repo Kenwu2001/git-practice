@@ -1,10 +1,31 @@
 # git相關知識
 
-## .git file
-最原始的情況會長這樣
-<img src="images/1.png" alt="1.png" width="500"/>
+## 目錄
+- [git組成要件](#git組成要件)
+- [了解.git file](#了解.git資料夾)
 
-## HEAD
+### git組成要件
+
+git物件主要有四種類型:
+
+- Blob物件
+- Tree物件
+- Commit物件
+- Tag物件
+
+有了這些物件就可以構成完整的Git資料結構，達到版本控制的效果。
+
+想要使用cmd來研究個個物件，以下是一些重要指令。
+```c
+$ git cat-file -t <sha-1 value>  #顯示該sha1 value是屬於那一種物件
+$ git cat-file -p <sha-1 value>  #顯示該sha1 value物件的內容
+```
+
+### 了解.git資料夾
+最原始的情況會長這樣
+<img src="images/1.png" alt="1.png" width="500"/>\
+
+### HEAD
 
 在git init之後可以看到HEAD file裡面顯示出以下資訊。
 ```c
@@ -47,13 +68,11 @@ ref:
 [參考文章2](https://www.git-tower.com/learn/git/glossary/head)
 [參考文章3](https://blog.git-init.com/what-is-head-in-git/)
 
-## blob(Binary Large Object)
+### blob(Binary Large Object)
 
 def: 是 Git 中的一種物件類型，專門用來存儲檔案的內容
 
-blob會被儲存在objects資料夾裡面。
-
-本來objects資料夾裡什麼東西都沒有。
+blob會被儲存在objects資料夾裡面，最一開始objects資料夾裡什麼東西都沒有，如下圖。
 ![alt text](images/11.png)
 
 假如我commit一個新的檔案之後，就會出現變化。以下是新增一個hello.py檔案並且commit後的結果。
@@ -64,3 +83,48 @@ blob會被儲存在objects資料夾裡面。
 ![alt text](images/13.png)
 ![alt text](images/14.png)
 ![alt text](images/15.png)
+
+若單純使用```git add .```，也會發現objects內容有所變化，原因就是git幫忙記錄了你所新增的內容。
+
+ref:
+[參考資料1](https://blog.simonxander.tw/2023/12/dot-git-folder-part-2.html)
+
+### tree
+
+tree object可以儲存資料的結構以及檔名(blob則是用來儲存檔案內容)
+
+下圖是經過一次commit之後的objects內容。
+![alt text](images/16.png)
+
+透過指令可以發現包含了commit、tree、blob物件。
+![alt text](images/17.png)
+![alt text](images/18.png)
+![alt text](images/19.png)
+
+可以看到tree object的內容是一個blob object，並且紀錄他的名字是hello.py。
+![alt text](images/20.png)
+
+ref:
+[參考資料1](https://titangene.github.io/article/git-tree-object.html)
+[參考資料2](https://medium.com/@flyotlin/%E4%BB%80%E9%BA%BC%E6%98%AFgit%E7%89%A9%E4%BB%B6-ebbeb3b22f9c)
+
+### commit 
+
+Commit object是進行commit後會出現的物件，記錄了某個特定時間點的狀態的對象。
+
+![alt text](images/21.png)
+
+觀察這個commit object可以發現裡面的內容是一個tree object，我們最後可以得到一個結論是提交一個commit之後，commit object會指向tree object，而tree object又會指向blob obect來顯示某個時刻的資料內容，這樣就可以成功紀錄每一個時刻的狀態，也就可以達到回朔的效果。可以用下圖表示。
+
+``` mermaid
+graph TD;
+commitObject --> treeObject;
+treeObject --> blobObject;
+blobObject --> 看到某個狀態的內容;
+```
+
+ref:
+[參考文章1](https://medium.com/@flyotlin/%E4%BB%80%E9%BA%BC%E6%98%AFgit%E7%89%A9%E4%BB%B6-ebbeb3b22f9c)
+
+### branch
+
