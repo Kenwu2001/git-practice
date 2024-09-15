@@ -20,15 +20,15 @@ ref: refs/heads/master
 ![alt text](images/2.png)
 
 當我強制切換到某一個commit的時候，可以看到HEAD就會變成detached模式。
-![alt text](image.png)
+![alt text](images/3.png)
 
-![alt text](image-1.png)
+![alt text](images/4.png)
 
 若想要回到原本的attached模式，只要重新切回到branch就可以了。如下面操作。
 
-![alt text](image-2.png)
+![alt text](images/5.png)
 
-![alt text](image-3.png)
+![alt text](images/6.png)
 
 
 
@@ -36,13 +36,31 @@ ref: refs/heads/master
 
 同時觀察了.git資料夾裡面HEAD的資訊，可以發現每當我們切branch的時候就會及時改變。
 
-![alt text](image-4.png)
-![alt text](image-5.png)
+![alt text](images/7.png)
+![alt text](images/8.png)
 
-![alt text](image-6.png)
-![alt text](image-7.png)
+![alt text](images/9.png)
+![alt text](images/10.png)
 
 ref:
 [參考文章1](https://blog.simonxander.tw/2023/12/dot-git-folder-part-1.html)
 [參考文章2](https://www.git-tower.com/learn/git/glossary/head)
 [參考文章3](https://blog.git-init.com/what-is-head-in-git/)
+
+## blob(Binary Large Object)
+
+def: 是 Git 中的一種物件類型，專門用來存儲檔案的內容
+
+blob會被儲存在objects資料夾裡面。
+
+本來objects資料夾裡什麼東西都沒有。
+![alt text](images/11.png)
+
+假如我commit一個新的檔案之後，就會出現變化。以下是新增一個hello.py檔案並且commit後的結果。
+
+![alt text](images/12.png)
+
+執行以下指令就可以解碼內容，可以看出內容就是在記錄我們什麼時候commit了一個版本以及增加了什麼檔案和內容是什麼。
+![alt text](images/13.png)
+![alt text](images/14.png)
+![alt text](images/15.png)
