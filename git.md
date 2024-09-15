@@ -128,3 +128,80 @@ ref:
 
 ### branch
 
+Def: A branch in Git is simply a lightweight movable pointer to one of these commits and also a snapshot of your changes.
+
+在協作專案的時候每個人負責一個分支，並且最後合併到主分支，這樣才可以減少衝突，並確保代碼的穩定性。
+
+Branch大致上可以分成Master、Dev、Feature、Release、Bug。
+
+Master: 所有可供使用者使用的正式版本都在此主分支上發布。
+Dev: 最新、功能最齊全的日常開發分支。如果要正式發布的話，會合併回master分支。
+Feature: 開發新功能的分支。
+Release: 在正式合併到master之前，釋出定期要上線的版本，release通常是從dev上分支出來的，預釋出結束後，要合併回master和dev。
+Bug: 正式釋出後，用於修復線上程式的bug，修復完成後，再合併回master和dev。
+
+### Commit Message撰寫
+
+看了蠻多篇文章介紹後，發現大家給的建議都是大同小異。如下表。
+
+```html
+Header: <TYPE>(<SCOPE>): <SUBJECT>
+
+Body: 72-character wrapped.
+
+Footer: ......
+```
+
+**Header**
+
+由type、scope、subject所組成。
+
+type代表commit的類別，通常有以下幾種:
+- feat: 對專案做了哪些新增、修改 (Feature)。
+- fix: 修復了那些功能 (Bug Fix)。
+- docs: 對專案撰寫文件 (Documentation)。
+- style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing - semi colons, et.)。
+- refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。
+- perf: 改善效能 (A code change that improves performance)。
+- test: 增加測試 (when adding missing tests)。
+- chore: 建構程序或輔助工具的變動 (maintain)。
+- revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。
+
+scope代表commit影響的範圍。
+
+subject則是commit的簡短描述，不超過 50 個字元，結尾不加句號
+
+**Body**
+
+對本次 Commit 的詳細描述，可以分成多行，每一行不要超過 72 個字元。說明程式碼變動的項目與原因，還有與先前行為的對比。
+
+**Footer**
+
+填寫任務編號(如果有的話)，
+BREAKING CHANGE（可忽略），記錄不兼容的變動，
+以 BREAKING CHANGE: 開頭，後面是對變動的描述、以及變動原因和遷移方法。
+
+---
+
+以下為一些網路上的範例:
+
+```
+test: email validation
+
+There are several unit tests for the email validation feature:
+1. Test the email validation function with invalid email addresses.
+2. Test the email validation function with valid email addresses.
+
+Issue: #3456
+```
+
+```
+docs: email validation
+
+We have added documentation for the email validation feature:
+1. Add the Tech Stack documentation.
+2. Add the User Guide documentation.
+3. Add the API documentation.
+
+Issue: #4567
+```
