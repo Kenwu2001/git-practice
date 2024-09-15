@@ -19,6 +19,30 @@ ref: refs/heads/master
 此圖顯示HEAD->featGitMD，代表目前指到featGitMD branch，也就是屬於attached的模式。
 ![alt text](images/2.png)
 
+當我強制切換到某一個commit的時候，可以看到HEAD就會變成detached模式。
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+若想要回到原本的attached模式，只要重新切回到branch就可以了。如下面操作。
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+
+
+所以看到```You are in 'detached HEAD' state```的時候，並不是代表做錯了什麼事情，而是HEAD目前指向了某一個commit而不是branch。
+
+同時觀察了.git資料夾裡面HEAD的資訊，可以發現每當我們切branch的時候就會及時改變。
+
+![alt text](image-4.png)
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+![alt text](image-7.png)
+
+ref:
 [參考文章1](https://blog.simonxander.tw/2023/12/dot-git-folder-part-1.html)
 [參考文章2](https://www.git-tower.com/learn/git/glossary/head)
 [參考文章3](https://blog.git-init.com/what-is-head-in-git/)
