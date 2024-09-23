@@ -30,8 +30,8 @@ function fib(n) {
     }
     return fibArr[n];
 }
-  
-console.log(fib(0)); // 0
+
+console.log(fib(0));
 console.log(fib(1));
 console.log(fib(5));
 console.log(fib(10));

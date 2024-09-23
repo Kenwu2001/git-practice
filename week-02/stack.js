@@ -15,20 +15,23 @@ export default class Stack {
   // 在 stack 頂部加入元素i
   push(element) {
 		// TODO
-        this.#items[this.#items.length] = element;
+    this.#items[this.#items.length] = element;
   }
 
   // 移除並回傳 stack 頂部的元素
   pop() {
 		// TODO
-        topItem = this.#items.at(-1);
-        this.#items.splice(-1, 1);
-        return topIteml
+    let topItem = this.#items.at(-1);
+    this.#items.splice(-1, 1);
+    return topItem
   }
 
   // 回傳 stack 頂部的元素，但不移除它
   peek() {
     // TODO
+    if (this.#items.length === 0) {
+      return "nothing in the stack";
+    }
     return this.#items.at(-1);
   }
 
