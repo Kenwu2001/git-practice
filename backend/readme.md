@@ -61,7 +61,16 @@ const port = process.env.PORT;
 $env:PORT = 4000; node app.js
 ```
 
+另一種方法是先```npm install dotenv```，並且在根目錄底下新增一個 .env 檔案，在檔案裡寫一行```PORT=3000```，並且在app.js裡改寫一下，如此一來就可以在終端機直接下```node app.js```的指令，程式就會自動找到 .env file 裡面的 PORT 號碼。
+```js
+// this is app.js
+const dotenv = require('dotenv');
+dotenv.config();
+const port = process.env.PORT;
+```
+
 ### 關於哪些檔案應該要被放上 github repo 這個問題，描述看看為什麼你選擇上傳某些檔案、選擇不上傳某些檔案，決策的要素是什麼？
+
 
 
 ### 範例程式中用 require，但上週的 Stack 是用 import/export，這兩種分別是 JavaScript 引用模組的兩種方式: CJS vs ESM，這兩者分別怎麼用？
@@ -108,6 +117,7 @@ console.log(add(2, 3)); // 輸出: 5
 ---
 
 ## <進階題>
+
 ### localhost 是什麼？
 ### curl 是什麼？查查看怎麼用 curl 來測試網路連線？常用參數有哪些？
 
