@@ -132,7 +132,28 @@ console.log(add(2, 3)); // 輸出: 5
 ## <進階題>
 
 ### localhost 是什麼？
+
+localhost可以想像成 local + host， host 可以想像成 server，所以 localhost 就是本地端的 server，當沒有網路的時候我們還是可以用 localhost 來測試我們的程式，因為電腦扮演 localhost 的角色，也就是本身電腦就是一個 server 來提供服務。
+另外，每個 server 都有唯一的 IP 位址，而我們把 localhost 的位址預設為 127.0.0.1。
+
 ### curl 是什麼？查查看怎麼用 curl 來測試網路連線？常用參數有哪些？
+
+curl 是 command-line 的工具，可以用來傳輸數據。它支持多種協議像是HTTP、HTTPS、FTP 等，平常會用它來測試網路連線狀況。
+想要用 curl 來測試網路連線的方式就是 ```curl http://example.com```，這個指令會送一個 GET 到 http://example.com 並顯示它的內容。
+
+常用的參數如下:
+- -I 或 --head : 只取得 headers
+```curl -I http://example.com```
+- -X 或 --request : 這可以指定 HTTP 的方法， GET、POST、PUT 等
+```curl -X POST http://example.com```
+- -d 或 --data : 發送數據，通常用於POST
+```curl -d "param1=value1&param2=value2" http://example.com```
+- -H 或 --header : 添加客製化的 headers
+```curl -H "Content-Type: application/json" http://example.com```
+- -o 或 --output: 把 response 儲存到檔案
+```curl -o output.html http://example.com```
+- -u 或 --user : 提供使用者名稱或密碼進行身分驗證
+```curl -u username:password http://example.com```
 
 ---
 
@@ -152,4 +173,5 @@ package.json會比npm init時多出一個dependencies。
 }
 ```
 
-node_modules裡面有什麼???
+node_modules裡面有什麼?
+包含了專案所需的所有外部套件和它們的依賴項(dependencies)，也有二進位檔案跟 module 檔案。
