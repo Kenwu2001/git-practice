@@ -68,10 +68,23 @@ const dotenv = require('dotenv');
 dotenv.config();
 const port = process.env.PORT;
 ```
-
+ˋ
 ### 關於哪些檔案應該要被放上 github repo 這個問題，描述看看為什麼你選擇上傳某些檔案、選擇不上傳某些檔案，決策的要素是什麼？
 
+經過上網查了相關資料，我決定省略以下幾個檔案或資料夾。
 
+- node_modules 資料夾
+    - 這是 Node.js 專案中安裝的所有 dependency package 的存放位置，因為它們可以通過 package.json 和 package-lock.json 重新生成，所以不需要提交。
+- Logs 相關
+    - logs 相關文件通常包含運行時的輸出信息，不需要特別提交。
+- .env file
+    - 這個檔案通常包含敏感信息，如 API 密鑰和數據庫憑據，不應該提交到版本控制系統。
+- OS generated files
+    - 例如 .DS_Store 以及 Thumbs.db，這些是作業系統生成的文件，對版本控制不重要。
+- .vscode folder
+    - 這個資料夾在每個專案都會出現，裡面的設定通常是開發者個人的偏好，不需要提交到版本控制系統。
+- temporary files
+    - 例如 *.tmp 以及 *.swp，這些文件通常是編輯器或其他工具生成的，也不需要提交到版本控制系統。
 
 ### 範例程式中用 require，但上週的 Stack 是用 import/export，這兩種分別是 JavaScript 引用模組的兩種方式: CJS vs ESM，這兩者分別怎麼用？
 
