@@ -12,7 +12,7 @@ Nginx 是一個輕量級的 Web server，它擋在所有後端程式的最前面
 
 #### pm2 套件是什麼？有什麼用處？
 
-
+pm2 是 Node.js 生態中的主流 app server 之一，可以透過它把 App 喚醒，也可以決定要開幾隻 App 程序來消化負載，也負責在 App 出錯時自動重啟 App。
 
 #### 步驟 9 中提到的 proxy 是什麼意思？為什麼要透過 Nginx 來 proxy 到 Express 開發的 Web Server? (提示 Reverse proxy vs Forward Proxy)
 
@@ -40,11 +40,15 @@ server {
 
 #### Security Group 是什麼？用途為何？有什麼設定原則嗎？
 
-
+Security Group 就像是一個虛擬的防火牆，可以針對不同的協議設定規則、也可以控制進出流量、可以知道哪些網路或人可以 access 到這個 EC2。
+擷取官網解釋 "Inbound rules control the incoming traffic to your instance, and outbound rules control the outgoing traffic from your instance."。
+作業 Inbound rules 設定的 Port 22 就是讓我們的電腦可以利用 SSH 去訪問 EC2，而 Port 80 則是讓我們的電腦可以用 HTTP 去訪問 EC2。
 
 #### 什麼是 sudo? 為什麼有的時候需要加上 sudo，有時候不用？
 
-
+sudo 是 Linux 和 Unix 系統中的一個命令，它的全稱是 "superuser do"，允許用戶以超級用戶（root）或其他用戶的身份來執行命令。
+有時候遇到需要系統管理權限的操作就需要用到 sudo 來暫時提升權限，例如安裝或卸載 package、修改系統配置檔案（如 /etc/hosts）、更改系統範圍的服務狀態（如 systemctl start nginx），有時候系統會要求用戶在執行管理任務時輸入自己的密碼，可以增加安全性。
+而有時候我們只是簡單瀏覽檔案 (ls、cat)，或者編輯 home directory 底下的文件，這些操作都不會涉及修改系統或影響其他用戶的資源，就可以不用打 sudo。
 
 #### Nginx 的 Log 檔案在哪裡？你怎麼找到的？怎麼看 Nginx 的 Log？
 
@@ -93,6 +97,7 @@ Log 檔案在 ```/var/log/nginx``` 資料夾裡面，裡面包含 access.log 以
 - [video - Permission denied(publickey) 問題](https://www.youtube.com/watch?v=Z-eTvYwWhuc)
 - [.conf 檔案要寫在哪裡](https://stackoverflow.com/questions/22143565/which-nginx-config-file-is-enabled-etc-nginx-conf-d-default-conf-or-etc-nginx)
 - [ forward & backward proxy ](https://www.jyt0532.com/2019/11/18/proxy-reverse-proxy/) 
+- [pm2](https://editor.leonh.space/2023/pm2/)
 
 #### (optional) 如果你很初學，不放心自己的過程是否正確，可以紀錄過程，我會盡量幫忙看
 
@@ -124,6 +129,31 @@ pm2 delete all
 nginx 跑在 EC2 上面，所以我們拿到的 EC2 ip address <!-- 
 -->就等於是 client，而 nginx 裡面在處理的是我要連接到哪個 web server。
 
+------
+
+#### Linux 相關問題
+
+![alt text](./index/image-5.png)
+
+/etc 是什麼的縮寫？這裡通常都放哪些檔案？
+
+- 它是 Et cetera 的縮寫，也有另一個說法是 Editable text config，所以顧名思義裡面通常會放 .cong 檔案，讓我們可以自由編輯。
+
+/var 這裡通常都放哪些檔案？
+
+- 通常放 variable files，也就是一些 作業系統在運作的時候會更新到的一些檔案，像是 log、cache files。
+
+/boot 這裡通常都放哪些檔案？
+
+- 通常會放可以 boot 系統的檔案。
+
+$PATH 環境變數的作用是什麼？
+
+- 把所有的可執行檔的路徑都包含在內，這樣就可以在任何路徑下執行一些可執行檔，Linux 會自動到 $PATH 裡面搜尋全部路徑，如果執行檔有在其中一個路徑底下，那麼就會被執行。
+
+which 指令的作用？
+
+- 知道某個 binary 在什麼資料夾路徑
 
 ------
 
