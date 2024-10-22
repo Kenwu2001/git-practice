@@ -1,6 +1,7 @@
 #### 在 Readme 中提供 instance 的 public IP，我會連線過去檢查，所以要保持主機是一直在啟動中
 
-18.181.171.126
+[public ip](18.181.171.126)
+上禮拜只有 merge 到 main branch 忘了 push，然後順便加一下超連結!
 
 #### 什麼是 instance type?
 
