@@ -1,9 +1,13 @@
 ## Week-05
 
 ### 網址
+[https://www.kenwuwu.xyz](https://www.kenwuwu.xyz)
 
 目前還沒有成功，用了超多次都不行。
-![alt text](image.png)
+![alt text](./index/image.png)
+
+終於成功，發現在某個帳號的 Google chrome 輸入 URL一直不能成功，但用無痕模式或者 Edge 瀏覽器就可以成功，有查資料是說Cookies 沒有刪除。(但我超過作業 dealine 了...)
+![alt text](./index/image-1.png)
 
 ### 你在哪裡購買網域的
 
