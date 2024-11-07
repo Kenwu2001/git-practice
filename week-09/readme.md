@@ -42,31 +42,31 @@
 7：讀取、寫入和執行權限 (rwx)
 假如讓擁有者沒有 "r" 的權限，那 nginx 就無法執行這個資料夾內的程式。
 ![alt text](image-11.png)
-```
-sudo chown -R www-data:www-data /var/myweb
-// 這條命令將 /var/myweb 目錄及其下所有檔案的擁有者和群組更改為 www-data。
-// 這樣 Web 伺服器（如 Nginx 或 Apache）就能擁有適當的權限來訪問這些檔案。
-```
-```
-sudo chmod -R 755 /var/myweb
-// 這條命令設置 /var/myweb 目錄及其內部檔案和子目錄的權限為 755
-// 這意味著
-// 擁有者（www-data）可以讀取、寫入和執行檔案。
-// 同一群組的用戶和其他用戶只能讀取和執行檔案，但不能修改檔案。
-```
+    ```
+    sudo chown -R www-data:www-data /var/myweb
+    // 這條命令將 /var/myweb 目錄及其下所有檔案的擁有者和群組更改為 www-data。
+    // 這樣 Web 伺服器（如 Nginx 或 Apache）就能擁有適當的權限來訪問這些檔案。
+    ```
+    ```
+    sudo chmod -R 755 /var/myweb
+    // 這條命令設置 /var/myweb 目錄及其內部檔案和子目錄的權限為 755
+    // 這意味著
+    // 擁有者（www-data）可以讀取、寫入和執行檔案。
+    // 同一群組的用戶和其他用戶只能讀取和執行檔案，但不能修改檔案。
+    ```
 
 - 查看該目錄的權限
-```
-ls -ld /var/myweb
-```
-![alt text](image-13.png)
-第一個 d 代表是 directory，後面三個三個一組看，分別代表檔案所有者、同一群組、其他用戶的權限，rwx 分別是 read、write、execute。第一個 www-data 是擁有者（用戶名），第二個 www-data 是群組（用戶組名稱）。
+    ```
+    ls -ld /var/myweb
+    ```
+    ![alt text](image-13.png)
+    第一個 d 代表是 directory，後面三個三個一組看，分別代表檔案所有者、同一群組、其他用戶的權限，rwx 分別是 read、write、execute。第一個 www-data 是擁有者（用戶名），第二個 www-data 是群組（用戶組名稱）。
 
 - 查看該目錄下所有檔案的權限
-```
-ls -l /var/myweb
-```
-![alt text](image-12.png)
+    ```
+    ls -l /var/myweb
+    ```
+    ![alt text](image-12.png)
 
 
 - log files
